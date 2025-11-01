@@ -5,35 +5,51 @@ using UnityEngine.Splines;
 
 public class MoveAlongSpline : MonoBehaviour
 {
-    [SerializeField] private SplineContainer _splineContainer;
     [SerializeField] private float _speed = 2f;
+
+    private SplineContainer _splineContainer;
 
     private Spline _spline;
 
-    private float _distanceTravelled;
+    private Coroutine _coroutine;
+
     private float _splineLength;
 
-    private void Start()
+    public void SetSplineContainer(SplineContainer splineContainer)
     {
-        _distanceTravelled = 0.0f;
+        _splineContainer = splineContainer;
+
         _spline = _splineContainer.Spline;
         _splineLength = _spline.GetLength();
     }
 
-    private void Move()
+    public void Move()
     {
-        StartCoroutine(MoveAlong());
+        if (_spline != null && _splineContainer != null && _coroutine == null)
+            _coroutine = StartCoroutine(MoveAlong());
+    }
+
+    public void Stop()
+    {
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+            _coroutine = null;
+
+            Debug.Log("Движение окончено!");
+        }
     }
 
     private IEnumerator MoveAlong()
     {
         float normalizedLength = 0.0f;
+        float distanceTravelled = 0.0f;
 
         while (Mathf.Approximately(normalizedLength, 1.0f) == false)
         {
-            _distanceTravelled += _speed * Time.deltaTime;
+            distanceTravelled += _speed * Time.deltaTime;
 
-            normalizedLength = Mathf.Clamp01(_distanceTravelled / _splineLength);
+            normalizedLength = Mathf.Clamp01(distanceTravelled / _splineLength);
 
             SplineUtility.Evaluate(_spline, normalizedLength, out float3 position, out float3 tangent, out float3 upVector);
 
@@ -41,7 +57,7 @@ public class MoveAlongSpline : MonoBehaviour
             Vector3 worldForward = _splineContainer.transform.TransformDirection(tangent);
             Vector3 worldUp = _splineContainer.transform.TransformDirection(upVector);
 
-            transform.position = Vector3.MoveTowards(transform.position, worldPosition, _distanceTravelled);
+            transform.position = Vector3.MoveTowards(transform.position, worldPosition, distanceTravelled);
 
             transform.rotation = Quaternion.LookRotation(worldUp, worldForward);
 
