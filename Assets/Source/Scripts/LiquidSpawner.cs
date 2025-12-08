@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Splines;
 
 public class LiquidSpawner : MonoBehaviour
 {
@@ -21,14 +18,10 @@ public class LiquidSpawner : MonoBehaviour
     public Liquid Spawn()
     {
         Liquid liquid = _pool.Get();
+        liquid.Initialize();
 
-        Handle(liquid);
+        liquid.transform.position = _point.position;
 
         return liquid;
-    }
-
-    private void Handle(Liquid liquid)
-    {
-        liquid.transform.position = _point.position;
     }
 }

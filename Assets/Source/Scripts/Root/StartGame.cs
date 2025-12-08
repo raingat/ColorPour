@@ -1,17 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StartGame : MonoBehaviour
 {
-    [SerializeField] private InitializeGame _initializeConfig;
-
+    [Header("LiquidSpawner Settings")]
     [SerializeField] private LiquidSpawner _liquidSpawner;
-    [SerializeField] private LiquidContainer _liquidContainer;
+    [SerializeField] private int _liquidStartCount;
+
+    [Header("Valve Settings")]
+    [SerializeField] private Valve _valve;
+
+    [Header("VesselDistributor Settings")]
+    [SerializeField] private VesselDistributor _vesselDistributor;
 
     private void Awake()
     {
-        _liquidSpawner.Initialize(_initializeConfig.StartSpawnLiquid);
-        _liquidContainer.Initialize(_initializeConfig.CountFillContainer);
+        _liquidSpawner.Initialize(_liquidStartCount);
+        _valve.Initialize();
+        _vesselDistributor.Initialize(_valve);
     }
 }

@@ -29,23 +29,14 @@ public class MoveAlongSpline : MonoBehaviour
             _coroutine = StartCoroutine(MoveAlong());
     }
 
-    public void Stop()
-    {
-        if (_coroutine != null)
-        {
-            StopCoroutine(_coroutine);
-            _coroutine = null;
-
-            Debug.Log("Движение окончено!");
-        }
-    }
-
     private IEnumerator MoveAlong()
     {
         float normalizedLength = 0.0f;
         float distanceTravelled = 0.0f;
 
-        while (Mathf.Approximately(normalizedLength, 1.0f) == false)
+        float endPoint = 1.0f;
+
+        while (Mathf.Approximately(normalizedLength, endPoint) == false)
         {
             distanceTravelled += _speed * Time.deltaTime;
 
@@ -64,6 +55,6 @@ public class MoveAlongSpline : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("Движение окончено!");
+        Debug.Log("End Move!");
     }
 }
