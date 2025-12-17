@@ -1,18 +1,17 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LiquidSpawner : MonoBehaviour
 {
-    [SerializeField] private Liquid _prefab;
+    [SerializeField] private List<Liquid> _prefabs;
     [SerializeField] private Transform _point;
-
-    private int _initialCount;
 
     private LiquidPool _pool;
 
-    public void Initialize(int initialCount)
+    public void Initialize(ConfigurateGame configurate)
     {
-        _initialCount = initialCount;
-        _pool = new LiquidPool(_prefab, _initialCount);
+        _pool = new LiquidPool(_prefabs.ToList(), configurate);
     }
 
     public Liquid Spawn()

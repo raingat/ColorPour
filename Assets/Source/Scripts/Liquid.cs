@@ -4,7 +4,11 @@ using UnityEngine.Splines;
 [RequireComponent(typeof(MoveAlongSpline))]
 public class Liquid : MonoBehaviour
 {
+    [SerializeField] private VarietiesColors _color;
+
     private MoveAlongSpline _moveAlongSpline;
+
+    public VarietiesColors Color => _color;
 
     public void Initialize()
     {

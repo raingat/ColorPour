@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class StartGame : MonoBehaviour
 {
+    [Header("Configurate Settings")]
+    [SerializeField] private ConfigurateGame _configurate;
+
     [Header("LiquidSpawner Settings")]
     [SerializeField] private LiquidSpawner _liquidSpawner;
-    [SerializeField] private int _liquidStartCount;
 
     [Header("Valve Settings")]
     [SerializeField] private Valve _valve;
@@ -14,7 +16,7 @@ public class StartGame : MonoBehaviour
 
     private void Awake()
     {
-        _liquidSpawner.Initialize(_liquidStartCount);
+        _liquidSpawner.Initialize(_configurate);
         _valve.Initialize();
         _vesselDistributor.Initialize(_valve);
     }
