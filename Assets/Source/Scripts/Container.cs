@@ -1,18 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Container : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private List<Indicator> _indicators;
 
-    // Update is called once per frame
-    void Update()
+    public int CountIndicators => _indicators.Count;
+
+    public void Initialize(List<Color> firstColors)
     {
-        
+        for (int i = 0; i < _indicators.Count; i++)
+        {
+            _indicators[i].Initialize();
+            _indicators[i].ChangeColor(firstColors[i]);
+        }
     }
 }

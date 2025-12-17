@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a1eced28b8ad1e45b11d55edbca44cf, type: 3}
-  m_Name: Configurate
+  m_Script: {fileID: 11500000, guid: 4cf874cf4af338a4e8fda2060c3a8b9b, type: 3}
+  m_Name: Yellow
   m_EditorClassIdentifier: 
-  _orderColors: 000000000100000002000000000000000000000001000000
+  _colorName: 2
+  _color: {r: 1, g: 0.85783035, b: 0, a: 0}

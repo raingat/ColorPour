@@ -22,7 +22,7 @@ public class LiquidPool
     {
         for (int i = 0; i < configurate.CountObject; i++)
         {
-            VarietiesColors color = configurate.GetColor(i);
+            VarietiesColors color = configurate.GetColorName(i);
 
             for (int j = 0; j < prefabs.Count; j++)
             {
