@@ -21,8 +21,7 @@ public class StartGame : MonoBehaviour
     private void Awake()
     {
         _liquidSpawner.Initialize(_configurate);
-        _valve.Initialize();
-        _vesselDistributor.Initialize(_valve);
+        _valve.Initialize(_liquidSpawner, _vesselDistributor);
 
         InitializeContainer();
     }

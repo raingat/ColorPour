@@ -17,7 +17,6 @@ public class LiquidSpawner : MonoBehaviour
     public Liquid Spawn()
     {
         Liquid liquid = _pool.Get();
-        liquid.Initialize();
 
         liquid.transform.position = _point.position;
 

@@ -1,16 +1,14 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Splines;
 
 [RequireComponent(typeof(ValveAnimation))]
 public class Valve : MonoBehaviour, IActivatable
 {
-    [SerializeField] private SplineContainer _splineContainer;
-
-    [SerializeField] private LiquidSpawner _liquidSpawner;
-
     [SerializeField] private float _reloadTime;
+
+    private LiquidSpawner _liquidSpawner;
+    private VesselDistributor _vesselDistributor;
 
     private ValveAnimation _valveAnimation;
 
@@ -19,10 +17,11 @@ public class Valve : MonoBehaviour, IActivatable
 
     private bool IsReloaded = false;
 
-    public event Action<Liquid> Produced;
-
-    public void Initialize()
+    public void Initialize(LiquidSpawner liquidSpawner, VesselDistributor vesselDistributor)
     {
+        _liquidSpawner = liquidSpawner;
+        _vesselDistributor = vesselDistributor;
+
         _valveAnimation = GetComponent<ValveAnimation>();
         _valveAnimation.Initialize();
         _waitForSeconds = new WaitForSeconds(_reloadTime);
@@ -35,23 +34,21 @@ public class Valve : MonoBehaviour, IActivatable
 
     private void TryTurnOn()
     {
-        if (IsReloaded == true)
+        if (IsReloaded == false && _vesselDistributor.CanAcceptLiquid())
+        {
+            _valveAnimation.PlayAnimationRotate();
+            Liquid liquid = _liquidSpawner.Spawn();
+
+            _vesselDistributor.AcceptLiquid(liquid);
+
+            IsReloaded = true;
+        }
+        else
         {
             if (_coroutine == null)
                 _coroutine = StartCoroutine(Reload());
 
             _valveAnimation.PlayAnimationRejection();
-        }
-        else
-        {
-            _valveAnimation.PlayAnimationRotate();
-            Liquid liquid = _liquidSpawner.Spawn();
-
-            liquid.Move(_splineContainer);
-
-            Produced?.Invoke(liquid);
-
-            IsReloaded = true;
         }
     }
 
