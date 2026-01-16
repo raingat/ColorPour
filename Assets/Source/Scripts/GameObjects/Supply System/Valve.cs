@@ -17,6 +17,8 @@ public class Valve : MonoBehaviour, IActivatable
 
     private bool IsReloaded = false;
 
+    public Action Activated;
+
     public void Initialize(LiquidSpawner liquidSpawner, VesselDistributor vesselDistributor)
     {
         _liquidSpawner = liquidSpawner;
@@ -34,20 +36,22 @@ public class Valve : MonoBehaviour, IActivatable
 
     private void TryTurnOn()
     {
-        if (IsReloaded == false && _vesselDistributor.CanAcceptLiquid())
+        if (IsReloaded == false && _vesselDistributor.CanAcceptLiquid() && _liquidSpawner.CanSpawn)
         {
+            IsReloaded = true;
+
             _valveAnimation.PlayAnimationRotate();
             Liquid liquid = _liquidSpawner.Spawn();
 
             _vesselDistributor.AcceptLiquid(liquid);
 
-            IsReloaded = true;
+            Activated?.Invoke();
+
+            if (_coroutine == null)
+                _coroutine = StartCoroutine(Reload());
         }
         else
         {
-            if (_coroutine == null)
-                _coroutine = StartCoroutine(Reload());
-
             _valveAnimation.PlayAnimationRejection();
         }
     }
