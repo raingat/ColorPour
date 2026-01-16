@@ -5,6 +5,10 @@ public class LiquidPool
 {
     private Queue<Liquid> _pool = new Queue<Liquid>();
 
+    private int _countCreateObject = 0;
+
+    public int CountCreateObject => _countCreateObject;
+
     public LiquidPool(List<Liquid> prefabs, ConfigurateGame configurate)
     {
         Create(prefabs, configurate);
@@ -32,6 +36,8 @@ public class LiquidPool
                     liquid.gameObject.SetActive(false);
 
                     _pool.Enqueue(liquid);
+
+                    _countCreateObject++;
 
                     break;
                 }

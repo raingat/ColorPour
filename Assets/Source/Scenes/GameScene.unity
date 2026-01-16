@@ -1823,8 +1823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bddf3a39290b2e14690ca92e7cf9613f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _liquidSpawner: {fileID: 720320663}
-  _reloadTime: 2
+  _reloadTime: 0.5
 --- !u!95 &950649465
 Animator:
   serializedVersion: 5
@@ -2984,6 +2983,7 @@ MonoBehaviour:
   - {fileID: 487663728}
   - {fileID: 186826587}
   - {fileID: 275773921}
+  _colors: []
 --- !u!1 &2060327447
 GameObject:
   m_ObjectHideFlags: 0

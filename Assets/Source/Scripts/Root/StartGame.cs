@@ -28,11 +28,11 @@ public class StartGame : MonoBehaviour
 
     private void InitializeContainer()
     {
-        List<Color> firstColors = new List<Color>();
+        List<Color> colors = new List<Color>();
 
-        for (int i = 0; i < _container.CountIndicators; i++)
-            firstColors.Add(_configurate.GetColor(i));
+        for (int i = 0; i < _configurate.CountObject; i++)
+            colors.Add(_configurate.GetColor(i));
 
-        _container.Initialize(firstColors);
+        _container.Initialize(colors, _valve);
     }
 }
