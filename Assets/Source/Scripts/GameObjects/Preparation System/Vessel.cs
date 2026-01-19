@@ -30,12 +30,14 @@ public class Vessel : MonoBehaviour, IActivatable
 
     private void TryDump()
     {
-        if (IsFill)
-        {
-            Dumping?.Invoke(this, _captureLiquid);
-            _captureLiquid = null;
+        if (IsFill == false)
+            return;
 
-            _rendering.DisableColor();
-        }
+        Liquid liquid = _captureLiquid;
+        _captureLiquid = null;
+
+        _rendering.DisableColor();
+
+        Dumping?.Invoke(this, liquid);
     }
 }

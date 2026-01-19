@@ -359,7 +359,7 @@ MonoBehaviour:
   - {fileID: 1924266230}
   - {fileID: 1886033269}
   - {fileID: 610573114}
-  _dispenser: {fileID: 0}
+  _dispenser: {fileID: 1220941624}
 --- !u!4 &115372348
 Transform:
   m_ObjectHideFlags: 0
@@ -372,7 +372,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 939194037}
+  - {fileID: 151087657}
+  - {fileID: 163353982}
+  - {fileID: 1924266234}
+  - {fileID: 1886033273}
+  - {fileID: 610573118}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &151087652
@@ -388,8 +394,9 @@ GameObject:
   - component: {fileID: 151087655}
   - component: {fileID: 151087654}
   - component: {fileID: 151087653}
+  - component: {fileID: 151087658}
   m_Layer: 0
-  m_Name: Vessel (1)
+  m_Name: Vessel 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -493,8 +500,20 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 115372348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &151087658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151087652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6963bda0f29b648863b30288f1ce2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &163353977
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,8 +527,9 @@ GameObject:
   - component: {fileID: 163353980}
   - component: {fileID: 163353979}
   - component: {fileID: 163353978}
+  - component: {fileID: 163353983}
   m_Layer: 0
-  m_Name: Vessel (2)
+  m_Name: Vessel 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -613,8 +633,20 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 115372348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &163353983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163353977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6963bda0f29b648863b30288f1ce2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &186826582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,8 +1275,9 @@ GameObject:
   - component: {fileID: 610573116}
   - component: {fileID: 610573115}
   - component: {fileID: 610573114}
+  - component: {fileID: 610573119}
   m_Layer: 0
-  m_Name: Vessel (5)
+  m_Name: Vessel 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1348,8 +1381,20 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 115372348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &610573119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610573113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6963bda0f29b648863b30288f1ce2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619876427
 GameObject:
   m_ObjectHideFlags: 0
@@ -2012,8 +2057,9 @@ GameObject:
   - component: {fileID: 939194035}
   - component: {fileID: 939194038}
   - component: {fileID: 939194039}
+  - component: {fileID: 939194040}
   m_Layer: 0
-  m_Name: Vessel
+  m_Name: Vessel 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2082,7 +2128,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 115372348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &939194038
 CapsuleCollider:
@@ -2117,6 +2163,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81b1a6be95f5e0345b6e0b85043db14a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &939194040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939194033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6963bda0f29b648863b30288f1ce2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &950649461
@@ -2309,6 +2367,52 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.068237595, y: -0.776404, z: 0.08535994, w: 0.62068844}
   m_LocalPosition: {x: 3.7358122, y: 3.267647, z: 1.9710517}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1220941623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1220941625}
+  - component: {fileID: 1220941624}
+  m_Layer: 0
+  m_Name: Dispenser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1220941624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220941623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec255e1383eb57d4ca5beb2d177ebb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSize: 2
+  _liquids: []
+--- !u!4 &1220941625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220941623}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.9724575, y: 1.9171902, z: 1.2662624}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3362,8 +3466,9 @@ GameObject:
   - component: {fileID: 1886033271}
   - component: {fileID: 1886033270}
   - component: {fileID: 1886033269}
+  - component: {fileID: 1886033274}
   m_Layer: 0
-  m_Name: Vessel (4)
+  m_Name: Vessel 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3467,8 +3572,20 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 115372348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1886033274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886033268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6963bda0f29b648863b30288f1ce2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1924266229
 GameObject:
   m_ObjectHideFlags: 0
@@ -3482,8 +3599,9 @@ GameObject:
   - component: {fileID: 1924266232}
   - component: {fileID: 1924266231}
   - component: {fileID: 1924266230}
+  - component: {fileID: 1924266235}
   m_Layer: 0
-  m_Name: Vessel (3)
+  m_Name: Vessel 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3587,8 +3705,20 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 115372348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1924266235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924266229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6963bda0f29b648863b30288f1ce2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2060327447
 GameObject:
   m_ObjectHideFlags: 0
@@ -3705,11 +3835,6 @@ SceneRoots:
   - {fileID: 904480362}
   - {fileID: 304540246}
   - {fileID: 115372348}
-  - {fileID: 939194037}
-  - {fileID: 151087657}
-  - {fileID: 163353982}
-  - {fileID: 1924266234}
-  - {fileID: 1886033273}
-  - {fileID: 610573118}
   - {fileID: 950649462}
   - {fileID: 1869238685}
+  - {fileID: 1220941625}

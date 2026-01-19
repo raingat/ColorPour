@@ -46,17 +46,19 @@ public class VesselDistributor : MonoBehaviour
         }
     }
 
+    public bool CanTransportLiquid()
+    {
+        return _dispenser.IsFull;
+    }
+
     private void TryTransportLiquid(Vessel vessel, Liquid liquid)
     {
-        if (_dispenser == null)
+        if (_dispenser.IsFull)
         {
-            Debug.Log("Передал!");
+            vessel.Fill(liquid);
             return;
         }
 
-        if (_dispenser.IsFull == false)
-            _dispenser.TryAcceptLiquid(liquid);
-        else
-            vessel.Fill(liquid);
+        _dispenser.AcceptLiquid(liquid);
     }
 }

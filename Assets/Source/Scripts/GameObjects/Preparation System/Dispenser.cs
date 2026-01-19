@@ -5,11 +5,11 @@ public class Dispenser : MonoBehaviour
 {
     [SerializeField] private int _maxSize;
 
-    private List<Liquid> _liquids = new();
+    [SerializeField] private List<Liquid> _liquids;
 
     public bool IsFull => _liquids.Count >= _maxSize;
 
-    public void TryAcceptLiquid(Liquid liquid)
+    public void AcceptLiquid(Liquid liquid)
     {
         _liquids.Add(liquid);
     }
