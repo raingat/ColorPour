@@ -9,6 +9,9 @@ public class StartGame : MonoBehaviour
     [Header("LiquidSpawner Settings")]
     [SerializeField] private LiquidSpawner _liquidSpawner;
 
+    [Header("ConsumerSpawner Settings")]
+    [SerializeField] private ConsumerSpawn _consumerSpawner;
+
     [Header("Valve Settings")]
     [SerializeField] private Valve _valve;
 
@@ -18,9 +21,14 @@ public class StartGame : MonoBehaviour
     [Header("Container Settings")]
     [SerializeField] private Container _container;
 
+    [Header("Dispenser Settings")]
+    [SerializeField] private Dispenser _dispenser;
+
     private void Awake()
     {
         _liquidSpawner.Initialize(_configurate);
+        _consumerSpawner.Initialize(_configurate);
+        _dispenser.Initialize(_consumerSpawner);
         _valve.Initialize(_liquidSpawner, _vesselDistributor);
 
         InitializeContainer();
