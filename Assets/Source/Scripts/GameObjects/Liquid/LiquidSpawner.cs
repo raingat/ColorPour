@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LiquidSpawner : MonoBehaviour
 {
-    [SerializeField] private List<Liquid> _prefabs;
+    [SerializeField] private List<LiquidConsumer> _prefabs;
     [SerializeField] private Transform _point;
 
     private LiquidPool _pool;
@@ -18,9 +18,9 @@ public class LiquidSpawner : MonoBehaviour
         _pool = new LiquidPool(_prefabs.ToList(), configurate);
     }
 
-    public Liquid Spawn()
+    public LiquidConsumer Spawn()
     {
-        Liquid liquid = _pool.Get();
+        LiquidConsumer liquid = _pool.Get();
 
         liquid.transform.position = _point.position;
 

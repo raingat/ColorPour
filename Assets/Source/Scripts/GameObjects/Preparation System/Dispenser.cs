@@ -5,7 +5,7 @@ public class Dispenser : MonoBehaviour
 {
     [SerializeField] private int _maxSize;
 
-    [SerializeField] private List<Liquid> _liquids;
+    [SerializeField] private List<LiquidConsumer> _liquids;
     [SerializeField] private List<Consumer> _consumers;
 
     private ConsumerSpawn _consumerSpawn;
@@ -44,7 +44,7 @@ public class Dispenser : MonoBehaviour
         _consumerSpawn.Created += SetConsumer;
     }
 
-    public void AcceptLiquid(Liquid liquid)
+    public void AcceptLiquid(LiquidConsumer liquid)
     {
         _liquids.Add(liquid);
     }

@@ -3,26 +3,26 @@ using UnityEngine;
 
 public class LiquidPool
 {
-    private Queue<Liquid> _pool = new Queue<Liquid>();
+    private Queue<LiquidConsumer> _pool = new Queue<LiquidConsumer>();
 
     private int _countCreateObject = 0;
 
     public int CountCreateObject => _countCreateObject;
 
-    public LiquidPool(List<Liquid> prefabs, ConfigurateGame configurate)
+    public LiquidPool(List<LiquidConsumer> prefabs, ConfigurateGame configurate)
     {
         Create(prefabs, configurate);
     }
 
-    public Liquid Get()
+    public LiquidConsumer Get()
     {
-        Liquid liquid = _pool.Dequeue();
+        LiquidConsumer liquid = _pool.Dequeue();
         liquid.gameObject.SetActive(true);
 
         return liquid;
     }
 
-    private void Create(List<Liquid> prefabs, ConfigurateGame configurate)
+    private void Create(List<LiquidConsumer> prefabs, ConfigurateGame configurate)
     {
         for (int i = 0; i < configurate.CountObject; i++)
         {
@@ -32,7 +32,7 @@ public class LiquidPool
             {
                 if (prefabs[j].Color == color)
                 {
-                    Liquid liquid = Object.Instantiate(prefabs[j]);
+                    LiquidConsumer liquid = Object.Instantiate(prefabs[j]);
                     liquid.gameObject.SetActive(false);
 
                     _pool.Enqueue(liquid);

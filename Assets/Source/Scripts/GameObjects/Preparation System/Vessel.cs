@@ -1,31 +1,22 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(VesselRendering))]
 public class Vessel : MonoBehaviour, IActivatable
 {
-    private VesselRendering _rendering;
-
-    private Liquid _captureLiquid;
+    private LiquidConsumer _captureLiquid;
 
     public bool IsFill => _captureLiquid != null;
 
-    public event Action<Vessel, Liquid> Dumping;
-
-    private void Awake()
-    {
-        _rendering = GetComponent<VesselRendering>();
-    }
+    public event Action<Vessel, LiquidConsumer> Dumping;
 
     public void Activate()
     {
         TryDump();
     }
 
-    public void Fill(Liquid liquid)
+    public void Fill(LiquidConsumer liquid)
     {
         _captureLiquid = liquid;
-        _rendering.SetFillColor();
     }
 
     private void TryDump()
@@ -33,10 +24,8 @@ public class Vessel : MonoBehaviour, IActivatable
         if (IsFill == false)
             return;
 
-        Liquid liquid = _captureLiquid;
+        LiquidConsumer liquid = _captureLiquid;
         _captureLiquid = null;
-
-        _rendering.DisableColor();
 
         Dumping?.Invoke(this, liquid);
     }

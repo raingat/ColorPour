@@ -41,7 +41,7 @@ public class Valve : MonoBehaviour, IActivatable
             IsReloaded = true;
 
             _valveAnimation.PlayAnimationRotate();
-            Liquid liquid = _liquidSpawner.Spawn();
+            LiquidConsumer liquid = _liquidSpawner.Spawn();
 
             _vesselDistributor.AcceptLiquid(liquid);
 

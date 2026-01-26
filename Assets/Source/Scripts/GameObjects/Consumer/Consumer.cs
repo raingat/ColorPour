@@ -5,7 +5,7 @@ public class Consumer : MonoBehaviour
 {
     [SerializeField] private VarietiesColors _color;
 
-    private Liquid _liquid;
+    private LiquidConsumer _liquid;
 
     private Transform _place;
 
@@ -34,7 +34,7 @@ public class Consumer : MonoBehaviour
         _place = place;
     }
 
-    public void SetLiquid(Liquid liquid)
+    public void SetLiquid(LiquidConsumer liquid)
     {
         _liquid = liquid;
     }
