@@ -23,6 +23,7 @@ public class Dispenser : MonoBehaviour
             {
                 if (_liquids[i].Color == _consumers[j].Color)
                 {
+                    _liquids[i].ResetLevel();
                     _consumers[j].SetLiquid(_liquids[i]);
                     _liquids.RemoveAt(i);
                     _consumers.RemoveAt(j);

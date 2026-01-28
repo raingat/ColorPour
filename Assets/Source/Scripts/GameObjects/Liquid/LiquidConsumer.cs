@@ -9,9 +9,11 @@ public class LiquidConsumer : MonoBehaviour
 
     private Liquid _liquid;
 
+    private float _minLevel = -0.75f;
+    private float _maxLevel = 0.3f;
     private float _flowRate = 0.001f;
 
-    public float CurrentLevel => _liquid.planePosition.y;
+    public bool MaxLevel => _liquid.planePosition.y >= _maxLevel;
 
     public VarietiesColors Color => _color;
 
@@ -22,19 +24,24 @@ public class LiquidConsumer : MonoBehaviour
         _liquid = GetComponent<Liquid>();
     }
 
-    public void UpLevel(float level)
+    public void ResetLevel()
     {
-        StartCoroutine(IncreaseLevel(level));
+        _liquid.planePosition = new Vector3(0.0f, _minLevel, 0.0f);
     }
 
-    public void DownLevel(float level)
+    public void UpLevel()
     {
-        StartCoroutine(DecreaseLevel(level));
+        StartCoroutine(IncreaseLevel());
     }
 
-    private IEnumerator IncreaseLevel(float level)
+    public void DownLevel()
     {
-        while (_liquid.planePosition.y < level)
+        StartCoroutine(DecreaseLevel());
+    }
+
+    private IEnumerator IncreaseLevel()
+    {
+        while (_liquid.planePosition.y < _maxLevel)
         {
             _liquid.planePosition += Vector3.up * _flowRate;
 
@@ -42,9 +49,9 @@ public class LiquidConsumer : MonoBehaviour
         }
     }
 
-    private IEnumerator DecreaseLevel(float level)
+    private IEnumerator DecreaseLevel()
     {
-        while (_liquid.planePosition.y > level)
+        while (_liquid.planePosition.y > _minLevel)
         {
             _liquid.planePosition -= Vector3.up * _flowRate;
 

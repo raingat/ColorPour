@@ -5,8 +5,9 @@ public class Consumer : MonoBehaviour
 {
     [SerializeField] private VarietiesColors _color;
 
+    [SerializeField] private Vector3 _scaleLiquid;
+    
     private LiquidConsumer _liquid;
-
     private Transform _place;
 
     public VarietiesColors Color => _color;
@@ -15,17 +16,14 @@ public class Consumer : MonoBehaviour
 
     private void Update()
     {
-        if (_liquid != null)
+        if (_liquid != null && _liquid.MaxLevel)
         {
             Transform place = _place;
             _place = null;
 
             Filled?.Invoke(this, place);
 
-            transform.position += new Vector3(0.0f, 1.0f, 0.0f);
-
-            Destroy(_liquid.gameObject);
-            Destroy(gameObject, 2.0f);
+            Destroy(gameObject);
         }
     }
 
@@ -37,5 +35,10 @@ public class Consumer : MonoBehaviour
     public void SetLiquid(LiquidConsumer liquid)
     {
         _liquid = liquid;
+        _liquid.transform.SetParent(transform);
+        _liquid.transform.localPosition = Vector3.zero;
+        _liquid.transform.localScale = _scaleLiquid;
+
+        _liquid.UpLevel();
     }
 }
