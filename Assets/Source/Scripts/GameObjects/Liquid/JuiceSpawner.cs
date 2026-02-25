@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class LiquidSpawner : MonoBehaviour
+public class JuiceSpawner : MonoBehaviour
 {
-    [SerializeField] private List<LiquidConsumer> _prefabs;
+    [SerializeField] private List<Juice> _prefabs;
     [SerializeField] private Transform _point;
 
-    private LiquidPool _pool;
+    private JuicePool _pool;
 
     private int _countSpawnObject = 0;
 
@@ -15,17 +15,17 @@ public class LiquidSpawner : MonoBehaviour
 
     public void Initialize(ConfigurateGame configurate)
     {
-        _pool = new LiquidPool(_prefabs.ToList(), configurate);
+        _pool = new JuicePool(_prefabs.ToList(), configurate);
     }
 
-    public LiquidConsumer Spawn()
+    public Juice Spawn()
     {
-        LiquidConsumer liquid = _pool.Get();
+        Juice juice = _pool.Get();
 
-        liquid.transform.position = _point.position;
+        juice.transform.position = _point.position;
 
         _countSpawnObject++;
 
-        return liquid;
+        return juice;
     }
 }

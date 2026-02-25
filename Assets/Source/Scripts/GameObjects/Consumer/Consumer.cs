@@ -3,42 +3,36 @@ using UnityEngine;
 
 public class Consumer : MonoBehaviour
 {
-    [SerializeField] private VarietiesColors _color;
+    [SerializeField] private VarietiesColors _requirementColor;
+
+    [SerializeField] private Bottle _bottle;
 
     [SerializeField] private Vector3 _scaleLiquid;
-    
-    private LiquidConsumer _liquid;
-    private Transform _place;
 
-    public VarietiesColors Color => _color;
+    public VarietiesColors Color => _requirementColor;
 
-    public Action<Consumer, Transform> Filled;
+    public Action<Consumer> Leaved;
 
-    private void Update()
+    private void Awake()
     {
-        if (_liquid != null && _liquid.MaxLevel)
-        {
-            Transform place = _place;
-            _place = null;
-
-            Filled?.Invoke(this, place);
-
-            Destroy(gameObject);
-        }
+        _bottle.Initialize(_requirementColor);
     }
 
-    public void SetSpawnPoint(Transform place)
+    public void TakePlace(BarPlace barPlace)
     {
-        _place = place;
+        barPlace.SetBottle(_bottle);
+        _bottle = null;
     }
 
-    public void SetLiquid(LiquidConsumer liquid)
+    public void ReturnBottle(Bottle bottle)
     {
-        _liquid = liquid;
-        _liquid.transform.SetParent(transform);
-        _liquid.transform.localPosition = Vector3.zero;
-        _liquid.transform.localScale = _scaleLiquid;
+        _bottle = bottle;
+        Destroy(_bottle.gameObject);
+        Leave();
+    }
 
-        _liquid.UpLevel();
+    private void Leave()
+    {
+        Leaved?.Invoke(this);
     }
 }

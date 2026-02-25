@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2872959247336513021}
   - component: {fileID: 8124541827254756370}
   m_Layer: 0
-  m_Name: BlueLiquid_NEW
+  m_Name: BlueJuice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2142575064505701476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f619684cd1ca345a15b7df5c2d4084, type: 3}
+  m_Script: {fileID: 11500000, guid: f204f088c44a8a141bd600111f1220a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _color: 1

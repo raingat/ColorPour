@@ -34,7 +34,7 @@ public class VesselDistributor : MonoBehaviour
         return result;
     }
 
-    public void AcceptLiquid(LiquidConsumer liquid)
+    public void AcceptLiquid(Juice liquid)
     {
         foreach (Vessel vessel in _vessels)
         {
@@ -51,7 +51,7 @@ public class VesselDistributor : MonoBehaviour
         return _dispenser.IsFull;
     }
 
-    private void TryTransportLiquid(Vessel vessel, LiquidConsumer liquid)
+    private void TryTransportLiquid(Vessel vessel, Juice liquid)
     {
         if (_dispenser.IsFull)
         {

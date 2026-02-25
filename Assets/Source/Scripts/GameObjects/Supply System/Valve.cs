@@ -7,7 +7,7 @@ public class Valve : MonoBehaviour, IActivatable
 {
     [SerializeField] private float _reloadTime;
 
-    private LiquidSpawner _liquidSpawner;
+    private JuiceSpawner _juiceSpawner;
     private VesselDistributor _vesselDistributor;
 
     private ValveAnimation _valveAnimation;
@@ -19,9 +19,9 @@ public class Valve : MonoBehaviour, IActivatable
 
     public Action Activated;
 
-    public void Initialize(LiquidSpawner liquidSpawner, VesselDistributor vesselDistributor)
+    public void Initialize(JuiceSpawner juiceSpawner, VesselDistributor vesselDistributor)
     {
-        _liquidSpawner = liquidSpawner;
+        _juiceSpawner = juiceSpawner;
         _vesselDistributor = vesselDistributor;
 
         _valveAnimation = GetComponent<ValveAnimation>();
@@ -36,12 +36,12 @@ public class Valve : MonoBehaviour, IActivatable
 
     private void TryTurnOn()
     {
-        if (IsReloaded == false && _vesselDistributor.CanAcceptLiquid() && _liquidSpawner.CanSpawn)
+        if (IsReloaded == false && _vesselDistributor.CanAcceptLiquid() && _juiceSpawner.CanSpawn)
         {
             IsReloaded = true;
 
             _valveAnimation.PlayAnimationRotate();
-            LiquidConsumer liquid = _liquidSpawner.Spawn();
+            Juice liquid = _juiceSpawner.Spawn();
 
             _vesselDistributor.AcceptLiquid(liquid);
 

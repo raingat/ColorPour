@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,53 +6,49 @@ public class Dispenser : MonoBehaviour
 {
     [SerializeField] private int _maxSize;
 
-    [SerializeField] private List<LiquidConsumer> _liquids;
-    [SerializeField] private List<Consumer> _consumers;
+    private List<Juice> _juices = new List<Juice>();
 
-    private ConsumerSpawn _consumerSpawn;
+    public bool IsFull => _juices.Count >= _maxSize;
+    public bool HaveJuice => _juices.Count > 0;
 
-    public bool IsFull => _liquids.Count >= _maxSize;
+    public Action JuiceCome;
 
-    private void Update()
+    public void AcceptLiquid(Juice juice)
     {
-        if (_consumers.Count == 0 || _liquids.Count == 0)
-            return;
+        _juices.Add(juice);
 
-        for (int i = 0; i < _liquids.Count; i++)
+        JuiceCome?.Invoke();
+    }
+
+    public List<VarietiesColors> GetAllAvailableColors()
+    {
+        List<VarietiesColors> availableColors = new List<VarietiesColors>();
+
+        foreach (Juice juice in _juices)
+            availableColors.Add(juice.Color);
+
+        return availableColors;
+    }
+
+    public List<Juice> GetJuice(List<VarietiesColors> requirementColors)
+    {
+        List<Juice> requirementJuices = new List<Juice>();
+
+        for (int i = 0; i < requirementColors.Count; i++)
         {
-            for (int j = 0; j < _consumers.Count; j++)
-            {
-                if (_liquids[i].Color == _consumers[j].Color)
-                {
-                    _liquids[i].ResetLevel();
-                    _consumers[j].SetLiquid(_liquids[i]);
-                    _liquids.RemoveAt(i);
-                    _consumers.RemoveAt(j);
+            VarietiesColors color = requirementColors[i];
 
-                    break;
-                }
+            int index = _juices.FindIndex(j => j.Color == color);
+
+            if (index != -1)
+            {
+                Juice juice = _juices[index];
+
+                requirementJuices.Add(juice);
+                _juices.RemoveAt(index);
             }
         }
-    }
 
-    private void OnDisable()
-    {
-        _consumerSpawn.Created -= SetConsumer;
-    }
-
-    public void Initialize(ConsumerSpawn consumerSpawn)
-    {
-        _consumerSpawn = consumerSpawn;
-        _consumerSpawn.Created += SetConsumer;
-    }
-
-    public void AcceptLiquid(LiquidConsumer liquid)
-    {
-        _liquids.Add(liquid);
-    }
-
-    public void SetConsumer(Consumer consumer)
-    {
-        _consumers.Add(consumer);
+        return requirementJuices;
     }
 }

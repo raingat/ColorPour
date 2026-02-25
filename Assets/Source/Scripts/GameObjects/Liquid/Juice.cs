@@ -3,17 +3,17 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Liquid))]
-public class LiquidConsumer : MonoBehaviour
+public class Juice : MonoBehaviour
 {
     [SerializeField] private VarietiesColors _color;
 
-    private Liquid _liquid;
+    private Liquid _juice;
 
     private float _minLevel = -0.75f;
     private float _maxLevel = 0.3f;
     private float _flowRate = 0.001f;
 
-    public bool MaxLevel => _liquid.planePosition.y >= _maxLevel;
+    public bool MaxLevel => _juice.planePosition.y >= _maxLevel;
 
     public VarietiesColors Color => _color;
 
@@ -21,12 +21,12 @@ public class LiquidConsumer : MonoBehaviour
 
     private void Awake()
     {
-        _liquid = GetComponent<Liquid>();
+        _juice = GetComponent<Liquid>();
     }
 
     public void ResetLevel()
     {
-        _liquid.planePosition = new Vector3(0.0f, _minLevel, 0.0f);
+        _juice.planePosition = new Vector3(0.0f, _minLevel, 0.0f);
     }
 
     public void UpLevel()
@@ -41,9 +41,9 @@ public class LiquidConsumer : MonoBehaviour
 
     private IEnumerator IncreaseLevel()
     {
-        while (_liquid.planePosition.y < _maxLevel)
+        while (_juice.planePosition.y < _maxLevel)
         {
-            _liquid.planePosition += Vector3.up * _flowRate;
+            _juice.planePosition += Vector3.up * _flowRate;
 
             yield return null;
         }
@@ -51,9 +51,9 @@ public class LiquidConsumer : MonoBehaviour
 
     private IEnumerator DecreaseLevel()
     {
-        while (_liquid.planePosition.y > _minLevel)
+        while (_juice.planePosition.y > _minLevel)
         {
-            _liquid.planePosition -= Vector3.up * _flowRate;
+            _juice.planePosition -= Vector3.up * _flowRate;
 
             yield return null;
         }

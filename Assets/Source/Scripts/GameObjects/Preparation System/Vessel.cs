@@ -3,26 +3,26 @@ using UnityEngine;
 
 public class Vessel : MonoBehaviour, IActivatable
 {
-    private LiquidConsumer _captureLiquid;
+    private Juice _captureJuice;
 
-    public bool IsFill => _captureLiquid != null;
+    public bool IsFill => _captureJuice != null;
 
-    public event Action<Vessel, LiquidConsumer> Dumping;
+    public event Action<Vessel, Juice> Dumping;
 
     public void Activate()
     {
         TryDump();
     }
 
-    public void Fill(LiquidConsumer liquid)
+    public void Fill(Juice liquid)
     {
-        _captureLiquid = liquid;
-        _captureLiquid.transform.SetParent(transform);
-        _captureLiquid.transform.localPosition = Vector3.zero;
+        _captureJuice = liquid;
+        _captureJuice.transform.SetParent(transform);
+        _captureJuice.transform.localPosition = Vector3.zero;
 
-        _captureLiquid.UpLevel();
+        _captureJuice.UpLevel();
 
-        _captureLiquid.AchievedMinLevel += Clear;
+        _captureJuice.AchievedMinLevel += Clear;
     }
 
     private void TryDump()
@@ -30,21 +30,21 @@ public class Vessel : MonoBehaviour, IActivatable
         if (IsFill == false)
             return;
 
-        if (_captureLiquid.MaxLevel == false)
+        if (_captureJuice.MaxLevel == false)
             return;
 
-        _captureLiquid.DownLevel();
+        _captureJuice.DownLevel();
     }
 
     private void Clear()
     {
-        _captureLiquid.AchievedMinLevel -= Clear;
+        _captureJuice.AchievedMinLevel -= Clear;
 
-        LiquidConsumer liquid = _captureLiquid;
-        _captureLiquid.DownLevel();
-        _captureLiquid.transform.SetParent(null);
-        _captureLiquid = null;
+        Juice juice = _captureJuice;
+        _captureJuice.DownLevel();
+        _captureJuice.transform.SetParent(null);
+        _captureJuice = null;
 
-        Dumping?.Invoke(this, liquid);
+        Dumping?.Invoke(this, juice);
     }
 }

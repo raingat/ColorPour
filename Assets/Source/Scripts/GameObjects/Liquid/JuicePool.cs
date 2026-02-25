@@ -1,28 +1,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LiquidPool
+public class JuicePool
 {
-    private Queue<LiquidConsumer> _pool = new Queue<LiquidConsumer>();
+    private Queue<Juice> _pool = new Queue<Juice>();
 
     private int _countCreateObject = 0;
 
     public int CountCreateObject => _countCreateObject;
 
-    public LiquidPool(List<LiquidConsumer> prefabs, ConfigurateGame configurate)
+    public JuicePool(List<Juice> prefabs, ConfigurateGame configurate)
     {
         Create(prefabs, configurate);
     }
 
-    public LiquidConsumer Get()
+    public Juice Get()
     {
-        LiquidConsumer liquid = _pool.Dequeue();
-        liquid.gameObject.SetActive(true);
+        Juice juice = _pool.Dequeue();
+        juice.gameObject.SetActive(true);
 
-        return liquid;
+        return juice;
     }
 
-    private void Create(List<LiquidConsumer> prefabs, ConfigurateGame configurate)
+    private void Create(List<Juice> prefabs, ConfigurateGame configurate)
     {
         for (int i = 0; i < configurate.CountObject; i++)
         {
@@ -32,10 +32,10 @@ public class LiquidPool
             {
                 if (prefabs[j].Color == color)
                 {
-                    LiquidConsumer liquid = Object.Instantiate(prefabs[j]);
-                    liquid.gameObject.SetActive(false);
+                    Juice juice = Object.Instantiate(prefabs[j]);
+                    juice.gameObject.SetActive(false);
 
-                    _pool.Enqueue(liquid);
+                    _pool.Enqueue(juice);
 
                     _countCreateObject++;
 
